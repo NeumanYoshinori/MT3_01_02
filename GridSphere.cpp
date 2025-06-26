@@ -17,9 +17,9 @@ void GridSphere::DrawSphere(const Sphere& sphere, const Matrix4x4& viewProjectio
 			float lon = lonIndex * kLonEvery; // 現在の経度
 			// world座標系でのabcを求める
 			Vector3 a, b, c;
-			a = { (sphere.center.x + sphere.radius) * cosf(lat) * cosf(lon), (sphere.center.y + sphere.radius) * sinf(lat), (sphere.center.z + sphere.radius) * cosf(lat) * sinf(lon) };
-			b = { (sphere.center.x + sphere.radius) * cosf(lat + kLatEvery) * cosf(lon), (sphere.center.y + sphere.radius) * sinf(lat + kLatEvery), (sphere.center.z + sphere.radius) * cosf(lat + kLatEvery) * sinf(lon) };
-			c = { (sphere.center.x + sphere.radius) * cosf(lat) * cosf(lon + kLonEvery), (sphere.center.y + sphere.radius) * sinf(lat), (sphere.center.z + sphere.radius) * cosf(lat) * sinf(lon + kLonEvery) };
+			a = { sphere.center.x + sphere.radius * cosf(lat) * cosf(lon), sphere.center.y + sphere.radius * sinf(lat), sphere.center.z + sphere.radius * cosf(lat) * sinf(lon) };
+			b = { sphere.center.x + sphere.radius * cosf(lat + kLatEvery) * cosf(lon), sphere.center.y + sphere.radius * sinf(lat + kLatEvery), sphere.center.z + sphere.radius * cosf(lat + kLatEvery) * sinf(lon) };
+			c = { sphere.center.x + sphere.radius * cosf(lat) * cosf(lon + kLonEvery), sphere.center.y + sphere.radius * sinf(lat), sphere.center.z + sphere.radius * cosf(lat) * sinf(lon + kLonEvery) };
 			// screen座標系まで変換
 			Vector3 aNdc = matrix->Transform(a, viewProjectionMatrix);
 			Vector3 bNdc = matrix->Transform(b, viewProjectionMatrix);
